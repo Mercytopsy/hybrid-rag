@@ -11,20 +11,6 @@ This project demonstrates how to build an document question-answering system cap
 
 ## Files description
 
-- `parser.py` — pulls text and tables out of a PDF with Docling
-- `agent.py` — the actual logic: chunking, indexing, retrieval, and the three answer
-  paths (RAG for text, pandas agent for analytical, a synthesis step for hybrid)
-- `router.py` — one LLM call, structured output, decides text / analytical / hybrid
-- `postgres_store.py` — the byte store backing the table retriever
-- `prompts.py` — every prompt string, kept out of the logic files
-- `config.py` — env vars, loads `.env` locally
-- `main.py` — CLI: `python main.py some_report.pdf`
-- `app.py` — FastAPI app, one route: `POST /query`
-- `schema.sql` — just the `vector` extension + the `docstore` table (PGVector
-  manages its own tables automatically)
-
-## Files description
-
 - `parser.py` – Extracts text, tables, and metadata from PDF documents using Docling, preparing them for indexing.
 - `agent.py` – Contains the core Hybrid-RAG workflow, including document chunking, vector indexing, retrieval, question answering, and the logic for handling textual, analytical, and hybrid queries.
 - `router.py` – Uses an LLM to classify incoming questions as textual, analytical, or hybrid, ensuring each request is routed through the appropriate pipeline.
