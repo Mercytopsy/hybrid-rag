@@ -23,6 +23,18 @@ This project demonstrates how to build an document question-answering system cap
 - `schema.sql` — just the `vector` extension + the `docstore` table (PGVector
   manages its own tables automatically)
 
+## Files description
+
+- `parser.py` – Extracts text, tables, and metadata from PDF documents using Docling, preparing them for indexing.
+- `agent.py` – Contains the core Hybrid-RAG workflow, including document chunking, vector indexing, retrieval, question answering, and the logic for handling textual, analytical, and hybrid queries.
+- `router.py` – Uses an LLM to classify incoming questions as textual, analytical, or hybrid, ensuring each request is routed through the appropriate pipeline.
+- `postgres_store.py` – Implements the PostgreSQL-backed byte store used to persist and retrieve parent documents associated with extracted tables.
+- `prompts.py` – Centralizes all prompt templates used by the application, keeping prompt definitions separate from business logic.
+- `config.py` – Loads application configuration and environment variables from the local `.env` file.
+- `main.py` – Command-line entry point for indexing PDF documents into the system.
+- `app.py` – FastAPI application exposing the API endpoints for querying indexed documents.
+- `schema.sql` – Initializes the PostgreSQL database by enabling the `pgvector` extension and creating the document store required by the application.
+
 
 
 ## Running it with Docker
